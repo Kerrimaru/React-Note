@@ -10,6 +10,7 @@ class NoteSummary extends React.Component{
   render(){
     return(
       <div className='summary'>
+        {console.log(this)}
         <h3>{this.props.title}</h3>
         <p>{this.props.content.substring(0,150)}...</p>
         <p>{this.props.tags}</p>
