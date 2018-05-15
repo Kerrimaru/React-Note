@@ -1,10 +1,16 @@
 import React from 'react'
 
 class Note extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = props;
+  }
+
+
   render(){
      return (
-    <div>
-      This is the note
+    <div id='note'>
+      <textarea />
     </div>
     )
   }

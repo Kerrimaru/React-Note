@@ -10,9 +10,12 @@ import NoteSummary from './NoteSummary'
 import Note from './Note'
 
 class App extends React.Component{
+  constructor(props){
+    super(props);
+  }
   render(){
     return(
-    <div>
+    <div id='main'>
       <NoteList />
       <Note />
     </div>
