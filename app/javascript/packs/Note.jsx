@@ -9,7 +9,8 @@ class Note extends React.Component{
 
   render(){
      return (
-    <div id='note'>
+    <div id='main-note' className='note-view'>
+      <h2></h2>
       <textarea />
     </div>
     )

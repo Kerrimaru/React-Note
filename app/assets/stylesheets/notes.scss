@@ -1,3 +1,109 @@
 // Place all the styles related to the Notes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+  
+body {
+  background-color: #fff;
+  color: #333;
+  margin: 33px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+h2 {
+  padding: 20px 0 ;
+  margin: 0px 0px;
+  font-size: 30px;
+  letter-spacing: 25px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+#main {
+  display: flex;
+  width: 85%;
+}
+
+#side-notes {
+  position: relative;
+  width: 30vw;
+  min-width: 200px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  //background-color: lightgray;
+ // border-left: 10px solid lightgray;
+  //border-top: 20px solid lightgray;
+  //border-bottom: 10px solid lightgray;
+  border-radius: 20px 0px 0px 0px;
+  overflow: scroll;
+  overflow-x:hidden;
+
+  #plus{
+    position: absolute;
+    right: 10%;
+    top: 0px;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+  }
+}
+
+#side-notes::-webkit-scrollbar { 
+    display: none; 
+}
+
+
+.note-view {  
+  padding: 30px;
+  width: 70%;
+  box-sizing: border-box;
+  /*border: 1px solid black;
+  */
+}
+
+.summary {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 0px 20px 20px 0px;
+  
+  h3 {
+    padding-top: 0px;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+  }
+
+  .description {
+    margin: 5px;
+    padding-top: 5px;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  .tags {
+    font-size: 12px;
+    font-style: italic;
+    font-family: "Times New Roman", Times, serif;
+  }
+}
+
+.selected {
+  background-color: white;
+  width: 100%;
+  border-radius: 20px 0px 0px 20px;
+  
+}
+
+textarea::-webkit-scrollbar { 
+  display: none; 
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-family: "Times New Roman", Times, serif;
+  box-sizing: border-box;
+}

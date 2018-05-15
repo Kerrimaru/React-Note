@@ -22,13 +22,33 @@ class NoteList extends React.Component{
   };
 
   render(){
-    let list = this.state.notes.map((note) =>
-      <div key={note.id}>
-        <NoteSummary {...note} />  
+    return(
+      <div id='side-notes'>
+        {this.state.notes.map((note) =>      
+          <NoteSummary {...note} />      
+        )}
+        <button onClick={this.addNote}>
+          + Add note
+        </button>
       </div>
-      );
-    return list
+    )
   }
+
 }
 
+
+
+
+
 export default NoteList;
+
+
+// render(){
+//     let list = this.state.notes.map((note) =>      
+//         <NoteSummary {...note} />      
+//       );
+//     list.push(<button onClick={this.addNote}>
+//           + Add note
+//         </button>)
+//     return list
+//   }
