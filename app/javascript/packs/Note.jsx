@@ -10,8 +10,8 @@ class Note extends React.Component{
   render(){
      return (
     <div id='main-note' className='note-view'>
-      <h2></h2>
-      <textarea />
+      <textarea id='title'></textarea>
+      <textarea id='content'></textarea>
     </div>
     )
   }

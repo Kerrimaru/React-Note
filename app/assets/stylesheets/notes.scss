@@ -29,35 +29,26 @@ h2 {
   position: relative;
   width: 30vw;
   min-width: 200px;
-  height: 80vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  //background-color: lightgray;
- // border-left: 10px solid lightgray;
-  //border-top: 20px solid lightgray;
-  //border-bottom: 10px solid lightgray;
-  border-radius: 20px 0px 0px 0px;
-  overflow: scroll;
-  overflow-x:hidden;
 
-  #plus{
-    position: absolute;
-    right: 10%;
-    top: 0px;
-    font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
+  #note-list {
+    border-radius: 20px 0px 0px 0px;
+    overflow: scroll;
+    overflow-x:hidden;
   }
 }
 
-#side-notes::-webkit-scrollbar { 
+#note-list::-webkit-scrollbar { 
     display: none; 
 }
 
 
 .note-view {  
   padding: 30px;
-  width: 70%;
+  width: 100vw;
   box-sizing: border-box;
   /*border: 1px solid black;
   */
@@ -90,20 +81,38 @@ h2 {
 }
 
 .selected {
-  background-color: white;
+  background-color: blue;
   width: 100%;
   border-radius: 20px 0px 0px 20px;
   
 }
 
-textarea::-webkit-scrollbar { 
+#title {
+  width: 100%;
+  border: none;
+  font-family: "Times New Roman", Times, serif;
+  box-sizing: border-box;
+  font-size: 30px;
+  font-weight: bold;
+  resize: none;
+
+}
+
+#content::-webkit-scrollbar { 
   display: none; 
 }
 
-textarea {
+#content {
   width: 100%;
   height: 100%;
   border: none;
   font-family: "Times New Roman", Times, serif;
   box-sizing: border-box;
+  resize: none;
+}
+
+#newButt{
+  margin-top: 20px;
+  height: 30px;
+  font-style: oblique;
 }

@@ -12,12 +12,16 @@ import Note from './Note'
 class App extends React.Component{
   constructor(props){
     super(props);
+    this.state = {selectedNote: null};
+    console.log(this.state);
   }
   render(){
     return(
     <div id='main'>
       <NoteList />
-      <Note />
+      {this.state.selectedNote &&
+        <Note />
+      }
     </div>
     )
   }
