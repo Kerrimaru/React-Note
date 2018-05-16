@@ -13,8 +13,6 @@ class NoteSummary extends React.Component{
   clickHandler = () => {
     this.props.clicked(this.props.id); 
     this.state.selected = true;
-    console.log(this.state);
-    console.log(this.props);
     let el = document.querySelectorAll('.summary')[this.props.id - 1];
     let previously = document.querySelector('.selected');
     if ( previously != null){

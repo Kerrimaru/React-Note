@@ -23,8 +23,8 @@ class NoteList extends React.Component{
   };
 
   addNote = () => {
-    console.log('clicked!!');
-    console.log(this.state);
+    // console.log('clicked!!');
+    // console.log(this.state);
     //this.setState({notes: +=})
     // note.setState{
 
@@ -32,18 +32,15 @@ class NoteList extends React.Component{
   }
 
   noteClicked = (id) => { 
-    console.log(this);
-    console.log('Note clicked: ' + id );
-    //this.props.onSelectNote(id);
+    this.props.onSelectNote(id);
   }
 
   render(){
-    var self = this;
     return(
       <div id='side-notes'>
         <div id='note-list'>
-          {this.state.notes.map(function(note){
-            note.clicked = self.noteClicked.bind(self);
+          {this.state.notes.map((note) => {
+            note.clicked = this.noteClicked;
             return (
             <NoteSummary {...note} key={note.id} />      
           )}

@@ -13,14 +13,18 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {selectedNote: null};
-    console.log(this.state);
   }
+
+  noteSelected = (id) => { 
+    this.setState({selectedNote: id})   
+  }
+
   render(){
     return(
     <div id='main'>
-      <NoteList />
+      <NoteList onSelectNote={this.noteSelected}/>
       {this.state.selectedNote &&
-        <Note />
+        <Note noteId={this.state.selectedNote} key={this.state.selectedNote}/>        
       }
     </div>
     )
