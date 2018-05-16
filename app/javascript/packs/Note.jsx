@@ -3,7 +3,9 @@ import React from 'react'
 class Note extends React.Component{
   constructor(props) {
     super(props);
-    this.state = props;
+    this.state = {
+      newNoteContent: ''
+    }
     //console.log(this.props);
   }
 
@@ -19,14 +21,28 @@ class Note extends React.Component{
         console.log(json);
         this.setState({title: json.title, content: json.content});
         //console.log(this.state.content);
+      }).catch(error => {
+        console.log('error fetching data', error);
       });
   };
+
+  handleUserInput = (e) => {
+    this.setState({
+      content: e.target.value
+    })
+  }
+
+  handleUserInputTitle = (e) => {
+    this.setState({
+      title: e.target.value
+    })
+  }
 
   render(){
     console.log(this.state.content);
     return (
       <div id='main-note' className='note-view'>
-        <textarea id='title' value={this.state.title}></textarea>
+        <textarea id='title' value={this.state.title} onChange={this.handleUserInputTitle}></textarea>
         <textarea id='content' value={this.state.content} onChange={this.handleUserInput}></textarea>
       </div>
     )
