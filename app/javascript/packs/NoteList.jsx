@@ -6,13 +6,6 @@ class NoteList extends React.Component{
   constructor(props){
     super(props);
     this.state = { notes: [] };
-    //this.state.selected = false;
-    // this.state.newNote = {
-    //   content: 'yo',
-    //   title: 'oy',
-    //   tags: 'uh',
-    //   id: 9
-    // }
   };
 
   componentDidMount(){
@@ -24,11 +17,7 @@ class NoteList extends React.Component{
       .then( (response) => {
           return response.json() })   
       .then( (json) => {
-        console.log(json);
-        console.log(json.notes);
         this.setState({notes: json});
-        console.log(this.state.notes);
-        console.log(this.state);
       });
   };
 
@@ -69,31 +58,6 @@ class NoteList extends React.Component{
   //addNote = () => {
     
     //sendToServer(){
-  addNote(){
-    var data = ({
-      "title": "yo",
-      "content": "oy",
-      "id": 999,
-      "tags": "la",
-      "created_at":"2018-05-14T17:53:38.670Z",
-      "updated_at":"2018-05-14T17:53:38.670Z",
-      "url":"http://kerri-virtualbo:3000/notes/1.json"
-    })
-    console.log('click');
-    var xhr = new XMLHttpRequest();
-    xhr.open("PUT", "/notes/new");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function(){
-      if (xhr.readyState === 4){
-        //this.setState({chain_length: JSON.parse(xhr.response).chain_length});
-      }
-    }.bind(this)
-    xhr.send(JSON.stringify(data));
-    console.log(JSON.stringify(data))
-  }
-  
-
-
   // addNote = () => {
   //   console.log('click');
   //   this.setState(prevState => ({
@@ -109,31 +73,33 @@ class NoteList extends React.Component{
 
 
 
-  // addNote = () => {
-  //   const prevNotes = this.state.notes;
-  //   var note = {
-      
-  //     title: 'yo',
-  //     content: '',
-  //     tags: ''
-  //   }
-
-
-  //   let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-  //   fetch('/notes.json', {
-  //     method: 'POST',
-  //     //credentials: 'include',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'X-CSRF-Token': token,
-  //     },
-  //     body: JSON.stringify(note)
-  //   })
-  //   // this.setState({
-  //   //   title: '',
-  //   //   content: '',
-  //   //   tags: '',
-  //   // })
+  addNote = () => {
+    console.log('click');
+    const prevNotes = this.state.notes;
+    var note = {      
+      title: '',
+      content: '',
+      tags: ''
+    }
+    let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    fetch('/notes.json', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': token,
+      },
+      body: JSON.stringify(note)
+    }).then(function(note){
+      console.log(note)
+    });
+    }
+  
+    // this.setState({
+    //   title: '',
+    //   content: '',
+    //   tags: '',
+    // })
 
 
   //   console.log(note); 

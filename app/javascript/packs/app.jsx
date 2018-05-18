@@ -16,6 +16,7 @@ class App extends React.Component{
   }
 
   noteSelected = (id) => { 
+    console.log(this.state.id);
     this.setState({selectedNote: id})   
   }
 
@@ -29,6 +30,30 @@ class App extends React.Component{
     </div>
     )
   }
+
+  //  addNote = () => {
+  //   console.log('click');
+  //   const prevNotes = this.state.notes;
+  //   let note = {      
+  //     title: '',
+  //     content: '',
+  //     tags: ''
+  //   }
+  //   console.log(note);
+  //   let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  //   fetch('/notes.json', {
+  //     method: 'POST',
+  //     credentials: 'include',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'X-CSRF-Token': token,
+  //     },
+  //     body: JSON.stringify(note)
+  //   }).then(console.log(this))
+  // }
+
+
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -4,27 +4,27 @@ class Note extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      newNoteContent: ''
     }
-    //console.log(this.props);
   }
 
-  // componentDidMount(){
-  //   this.getNotes();
-  // }
-
   componentDidMount() {
-    fetch('/notes/' + this.props.noteId + '.json')
+    fetch(`/notes/${this.props.noteId}.json`)
       .then( (response) => {
           return response.json() })   
       .then( (json) => {
-        console.log(json);
         this.setState({title: json.title, content: json.content});
         //console.log(this.state.content);
       }).catch(error => {
         console.log('error fetching data', error);
       });
   };
+
+  // handleUserInput = () => {
+  //   this.setState({
+  //     content: this.state.content.value,
+  //     title: this.state.title.value
+  //   })
+  // }
 
   handleUserInput = (e) => {
     this.setState({
@@ -39,33 +39,30 @@ class Note extends React.Component{
   }
 
   render(){
-    console.log(this.state.content);
+    //console.log(this.state.content);
     return (
       <div id='main-note' className='note-view'>
-        <textarea id='title' value={this.state.title} onChange={this.handleUserInputTitle}></textarea>
-        <textarea id='content' value={this.state.content} onChange={this.handleUserInput}></textarea>
+        <textarea id='title' value={this.state.title} onChange={this.handleUserInputTitle} onBlur={this.saveContent}></textarea>
+        <textarea id='content' value={this.state.content} onChange={this.handleUserInput} onBlur={this.saveContent}></textarea>
       </div>
     )
   }
 
+  saveContent = () => {
+    console.log('lost focus');
+    let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    var data = {"title":this.state.title, "content":this.state.content};
+    fetch(`/notes/${this.props.noteId}.json`, {
+      method: 'PUT',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': token,
+      },
+      body: JSON.stringify(data)
+    })
+  }
 
-
-  // render(){
-  //   console.log(this.state);
-  //   if(this.state.notes.title) {
-  //    return (
-  //     <div id='main-note' className='note-view'>
-  //     <h1 id='title'>{this.state.title}</h1>
-  //     <textarea id='content'>{this.state.content}</textarea>
-  //   </div>
-  //   )
-  //   }
-  //   return (
-  //     <div>
-  //       hello
-  //       </div>
-  //     )
-  // }
 }
 
 export default Note;
